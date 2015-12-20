@@ -1,5 +1,6 @@
 var rp = require('request-promise');
 //create the Deopop class which has all the methods and variables
+var follow_url;
 var options = {
       uri: 'https://api.garage.me/oauth2/access_token?',
       headers: {
@@ -23,9 +24,10 @@ function Depop () {
 				var myObject = JSON.parse(htmlString);
 		 		var second_user_id = '2994209'
 		 		options.headers['Authorization']= 'Bearer ' + myObject.access_token;
-				var follow_url = 'https://api.garage.me/api/v1/users/%s/following/?user_id=%s';
+				follow_url = 'https://api.garage.me/api/v1/users/%s/following/?user_id=%s';
 		 		follow_url = follow_url.replace('%s', myObject.user_id, second_user_id); 
 		 		follow_url = follow_url.replace('%s', second_user_id); //follow_url have the parameters at the right place
+		     	console.log(follow_url);
 		     	return follow_url;		 					
 			})
 			.catch(function(err) {
@@ -39,6 +41,6 @@ function Depop () {
 
 var object = new Depop();
 var result = object.getFollowUrl();
-console.log(result);
+console.log(follow_url);
 //console.log("----");
 //console.log(yo);
