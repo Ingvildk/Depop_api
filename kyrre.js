@@ -34,15 +34,13 @@ function Depop () {
     this.getFollowUrl = function(username, password) {
         var that = this;
         var data = that.login(username, password);
-
-        return 
         data.then(function(dict) {
+            dict = JSON.parse(dict);            
             var second_user_id = '2994209'
             follow_url = 'https://api.garage.me/api/v1/users/%s/following/?user_id=%s';
             follow_url = follow_url.replace('%s', dict.user_id); 
             follow_url = follow_url.replace('%s', second_user_id);
             console.log("inside getFollowUrl:");
-            console.log(follow_url);
             return follow_url;
         })
         .catch(function(err) {
@@ -60,16 +58,23 @@ function Depop () {
 
 var client = new Depop();
 var result = client.login("kyrre", "hehheh");
-var url = client.getFollowUrl("kyrre", "hehheh");
 
 result.then(function(response) {
     console.log("------");
     console.log(client.accessToken);
 });
 
+var url = client.getFollowUrl("kyrre", "hehheh");
+
+/*
+url.then(function(repos) {
+    console.log(repos);
+});
+
 url.then(function(repos) {
     console.log("follow url: ");
     console.log(repos);
 });
+*/
 
 
