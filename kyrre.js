@@ -84,7 +84,7 @@ var url = client.getFollowUrl("kyrre", "hehheh");
 
 
 url.then(function(repos) {
-    console.log(repos);
+    console.log(follow_url);
 });
 /*
 url.then(function(repos) {
