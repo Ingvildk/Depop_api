@@ -1,5 +1,6 @@
 var rp = require('request-promise');
 
+<<<<<<< HEAD
 function Depop () {
     this.accessToken = undefined;
     this.headers = {
@@ -79,3 +80,4 @@ result.then(function(respone) {
     console.log(response);
 });
 */
+
